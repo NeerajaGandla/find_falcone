@@ -42,6 +42,6 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return new Gson().toJson(this);
+        return name;
     }
 }

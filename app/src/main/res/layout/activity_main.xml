@@ -36,14 +36,14 @@
                         android:orientation="horizontal"
                         android:weightSum="2">
 
-                        <android.support.v7.widget.AppCompatSpinner
+                        <Spinner
                             android:id="@+id/sp_planet1_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp" />
 
-                        <android.support.v7.widget.AppCompatSpinner
+                        <Spinner
                             android:id="@+id/sp_vehicle1_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -98,14 +98,14 @@
                         android:orientation="horizontal"
                         android:weightSum="2">
 
-                        <android.support.v7.widget.AppCompatSpinner
+                        <Spinner
                             android:id="@+id/sp_planet2_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp" />
 
-                        <android.support.v7.widget.AppCompatSpinner
+                        <Spinner
                             android:id="@+id/sp_vehicle2_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -160,14 +160,14 @@
                         android:orientation="horizontal"
                         android:weightSum="2">
 
-                        <android.support.v7.widget.AppCompatSpinner
+                        <Spinner
                             android:id="@+id/sp_planet3_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp" />
 
-                        <android.support.v7.widget.AppCompatSpinner
+                        <Spinner
                             android:id="@+id/sp_vehicle3_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -222,14 +222,14 @@
                         android:orientation="horizontal"
                         android:weightSum="2">
 
-                        <android.support.v7.widget.AppCompatSpinner
+                        <Spinner
                             android:id="@+id/sp_planet4_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp" />
 
-                        <android.support.v7.widget.AppCompatSpinner
+                        <Spinner
                             android:id="@+id/sp_vehicle4_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"

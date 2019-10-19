@@ -6,8 +6,10 @@
     <string name="no_planets_data">No Planets To Search</string>
     <string name="no_vehicles_data">No Vehicles Available</string>
     <string name="no_data">Data Unavailable</string>
-    <string name="success_msg">Congratulations! You have Successfully located Falcone in Planet:</string>
+    <string name="success_msg">Congratulations on Finding Falcone! King Shan is Mighty Pleased</string>
     <string name="message">message</string>
     <string name="planet_name">planet_name</string>
+    <string name="time_taken">time_taken</string>
     <string name="select_all_planets_vehicles">Please Select 4 Planets and Choose Vehicles for each Planet</string>
+    <string name="error_finding_falcone">Unable to Find Falcone</string>
 </resources>

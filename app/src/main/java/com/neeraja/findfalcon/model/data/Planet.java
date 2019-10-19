@@ -24,6 +24,6 @@ public class Planet {
 
     @Override
     public String toString() {
-        return new Gson().toJson(this);
+        return name;
     }
 }

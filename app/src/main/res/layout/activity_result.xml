@@ -9,10 +9,14 @@
 
     <TextView
         android:id="@+id/tv_result"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
         android:padding="5dp"
+        android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textStyle="bold" />
 
@@ -22,7 +26,17 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:padding="5dp"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_time_taken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_search_again"
@@ -35,9 +49,9 @@
         android:paddingTop="10dp"
         android:paddingRight="20dp"
         android:paddingBottom="10dp"
-        android:textStyle="bold"
         android:text="Search Again"
         android:textAllCaps="false"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 
 </LinearLayout>

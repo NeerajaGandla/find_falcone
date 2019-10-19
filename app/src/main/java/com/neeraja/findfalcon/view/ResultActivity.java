@@ -13,6 +13,7 @@ import com.neeraja.findfalcon.contract.ResultActivityContract;
 import com.neeraja.findfalcon.utils.Utils;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ResultActivity extends AppCompatActivity implements ResultActivityContract.View {
@@ -23,18 +24,23 @@ public class ResultActivity extends AppCompatActivity implements ResultActivityC
     TextView planetNameTv;
     @BindView(R.id.btn_search_again)
     Button searchAgainBtn;
+    @BindView(R.id.tv_time_taken)
+    TextView timeTakenTv;
+
     private Context mContext;
     private String message, planetName;
+    private double timeTaken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         mContext = ResultActivity.this;
-
+        ButterKnife.bind(this);
         if (getIntent().getExtras() != null) {
             message = getIntent().getStringExtra(getString(R.string.message));
             planetName = getIntent().getStringExtra(getString(R.string.planet_name));
+            timeTaken = getIntent().getDoubleExtra(getString(R.string.time_taken), 0);
             onLoad(message, planetName);
         }
     }
@@ -50,7 +56,8 @@ public class ResultActivity extends AppCompatActivity implements ResultActivityC
             resultTv.setText(message);
         }
         if (Utils.isValidString(planetName)) {
-            planetNameTv.setText(planetName);
+            planetNameTv.setText("Planet : " + planetName);
+            timeTakenTv.setText("Time Taken : " + String.valueOf(timeTaken));
             searchAgainBtn.setVisibility(View.GONE);
         }
     }
