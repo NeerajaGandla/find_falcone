@@ -315,11 +315,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                         double timeTaken = 0;
                         if (planetName.equalsIgnoreCase(planet1Name)) {
                             timeTaken = timeTaken1;
-                        } else if (planetName.equalsIgnoreCase(planet1Name)) {
+                        } else if (planetName.equalsIgnoreCase(planet2Name)) {
                             timeTaken = timeTaken2;
-                        } else if (planetName.equalsIgnoreCase(planet1Name)) {
+                        } else if (planetName.equalsIgnoreCase(planet3Name)) {
                             timeTaken = timeTaken3;
-                        } else if (planetName.equalsIgnoreCase(planet1Name)) {
+                        } else if (planetName.equalsIgnoreCase(planet4Name)) {
                             timeTaken = timeTaken4;
                         }
                         intent.putExtra(getString(R.string.time_taken), timeTaken);
@@ -335,5 +335,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         } else {
             Utils.showAlert(getString(R.string.no_data), mContext);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.finishAffinity();
     }
 }

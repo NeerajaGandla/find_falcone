@@ -10,6 +10,7 @@ import com.neeraja.findfalcon.model.data.TokenResponse;
 import com.neeraja.findfalcon.model.data.Vehicle;
 import com.neeraja.findfalcon.model.network.ApiClient;
 import com.neeraja.findfalcon.model.network.ApiInterface;
+import com.neeraja.findfalcon.model.repository.MainActivityRepo;
 
 import java.util.List;
 
@@ -21,87 +22,75 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
     private static final String TAG = "MainActivityPresenter";
 
     MainActivityContract.View mView;
+    MainActivityContract.Repository repository;
     ApiInterface apiService;
 
     public MainActivityPresenter(MainActivityContract.View view) {
         this.mView = view;
-        apiService = ApiClient.getClient().create(ApiInterface.class);
+        this.repository = new MainActivityRepo(this);
     }
-
 
     @Override
     public void loadVehicles() {
-        Call<List<Vehicle>> call = apiService.getVehicles();
-        call.enqueue(new Callback<List<Vehicle>>() {
-            @Override
-            public void onResponse(Call<List<Vehicle>> call, Response<List<Vehicle>> response) {
-                int statusCode = response.code();
-                List<Vehicle> vehicles = response.body();
-                mView.onLoadVehicles(vehicles);
-            }
-
-            @Override
-            public void onFailure(Call<List<Vehicle>> call, Throwable t) {
-                Log.e(TAG, t.toString());
-                mView.onLoadVehicles(null);
-            }
-        });
+        repository.loadVehicles();
     }
 
     @Override
     public void loadPlanets() {
-        Call<List<Planet>> call = apiService.getPlanets();
-        call.enqueue(new Callback<List<Planet>>() {
-            @Override
-            public void onResponse(Call<List<Planet>> call, Response<List<Planet>> response) {
-                int statusCode = response.code();
-                List<Planet> planets = response.body();
-                mView.onLoadPlanets(planets);
-            }
-
-            @Override
-            public void onFailure(Call<List<Planet>> call, Throwable t) {
-                Log.e(TAG, t.toString());
-                mView.onLoadPlanets(null);
-            }
-        });
+        repository.loadPlanets();
     }
 
     @Override
     public void getToken() {
-        Call<TokenResponse> call = apiService.getToken();
-        call.enqueue(new Callback<TokenResponse>() {
-            @Override
-            public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
-                int statusCode = response.code();
-                TokenResponse tokenResponse = response.body();
-                mView.onGetToken(tokenResponse);
-            }
-
-            @Override
-            public void onFailure(Call<TokenResponse> call, Throwable t) {
-                Log.e(TAG, t.toString());
-                mView.onGetToken(null);
-            }
-        });
+        repository.getToken();
     }
 
     @Override
     public void findFalcone(FindFalconeRequest request) {
-        Call<FindFalconResponse> call = apiService.findFalcone(request);
-        call.enqueue(new Callback<FindFalconResponse>() {
-            @Override
-            public void onResponse(Call<FindFalconResponse> call, Response<FindFalconResponse> response) {
-                int statusCode = response.code();
-                FindFalconResponse findFalconResponse = response.body();
-                mView.onFindFalcone(findFalconResponse);
-            }
+        repository.findFalcone(request);
+    }
 
-            @Override
-            public void onFailure(Call<FindFalconResponse> call, Throwable t) {
-                Log.e(TAG, t.toString());
-                mView.onFindFalcone(null);
-            }
-        });
+    @Override
+    public void onHandleVehiclesResponse(Response<List<Vehicle>> vehiclesResponse) {
+        if (vehiclesResponse != null) {
+            int statusCode = vehiclesResponse.code();
+            List<Vehicle> vehicles = vehiclesResponse.body();
+            mView.onLoadVehicles(vehicles);
+        } else {
+            mView.onLoadVehicles(null);
+        }
+    }
+
+    @Override
+    public void onHandlePlanetsResponse(Response<List<Planet>> planetsResponse) {
+        if (planetsResponse != null) {
+            int statusCode = planetsResponse.code();
+            List<Planet> planets = planetsResponse.body();
+            mView.onLoadPlanets(planets);
+        } else {
+            mView.onLoadPlanets(null);
+        }
+    }
+
+    @Override
+    public void onHandleTokenResponse(Response<TokenResponse> response) {
+        if (response != null) {
+            int statusCode = response.code();
+            TokenResponse tokenResponse = response.body();
+            mView.onGetToken(tokenResponse);
+        } else {
+            mView.onGetToken(null);
+        }
+    }
+
+    @Override
+    public void onHandleFindFalconeResponse(Response<FindFalconResponse> response) {
+        if (response != null) {
+            int statusCode = response.code();
+            FindFalconResponse falconResponse = response.body();
+            mView.onFindFalcone(falconResponse);
+        } else {
+            mView.onFindFalcone(null);
+        }
     }
 }
